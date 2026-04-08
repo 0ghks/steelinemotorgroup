@@ -1,0 +1,429 @@
+@charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    font-family: Isamanru;
+    vertical-align: baseline;
+    text-decoration: none;
+    color: inherit;
+    list-style: none;
+    box-sizing: border-box;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+h2 {
+    font-weight: 700;
+    font-size: 64px;
+    letter-spacing: 0.05em;
+
+}
+
+h3 {
+    font-weight: 500;
+    font-size: 40px;
+    color: #555555;
+}
+
+/* main.css 수정 */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    /* 맥용: 글자를 더 가늘고 부드럽게 */
+    -moz-osx-font-smoothing: grayscale;
+    /* 파이어폭스용 */
+    text-rendering: optimizeLegibility;
+    /* 가독성 최적화 */
+}
+
+#wrap {
+    position: relative;
+    top: 0;
+    width: 100%;
+    transition: all 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+    /* top 대신 all로 변경 */
+    margin-bottom: 0;
+    /* 초기 마진 */
+}
+
+/* S3가 wrap의 유령 공간을 무시하고 올라올 수 있도록 설정 */
+.s3 {
+    position: relative;
+    z-index: 10;
+}
+
+/* JS에서 섹션 3 도달 시 추가되는 클래스 */
+.page.hide {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    /* 아래로 살짝 내려가며 사라지는 효과 */
+}
+
+
+
+header {
+    position: absolute;
+    display: flex;
+
+    color: white;
+    width: 100%;
+    height: 120px;
+    align-items: center;
+
+    padding: 0 96px;
+}
+
+.lnb {
+    display: block;
+    opacity: 0;
+}
+
+.topbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topbar h1 a {
+    display: block;
+    width: 209px;
+    height: 35px;
+    background: url(../img/logo.svg)no-repeat center center;
+}
+
+.gnb {
+    position: absolute;
+    display: flex;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+
+    gap: 64px;
+}
+
+
+
+
+
+.gnb>li:last-child a {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.gnb>li:last-child span {
+    display: block;
+    width: 12px;
+    height: 12px;
+    background: url(../img/top_arr.svg)no-repeat center center;
+}
+
+
+
+.util {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+.util li:first-child a {
+    padding: 8px 16px;
+
+}
+
+
+
+
+
+.util li:nth-child(2) a {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+
+
+.util li:nth-child(2) span {
+    display: block;
+    width: 17px;
+    height: 10px;
+    background: url(../img/down_arr.svg)no-repeat center center;
+
+}
+
+.util li:nth-child(3) a {
+    display: block;
+    width: 20px;
+    height: 15px;
+    background: url(../img/menu.svg)no-repeat center center;
+
+}
+
+/* --- CSS 수정 및 추가 --- */
+
+/* 1. lnb 초기 상태 설정 */
+.lnb {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-top: 20px;
+    transition: all 0.3s ease;
+    min-width: 170px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    border-radius: 10px;
+}
+
+/* 2. gnb의 li에 호버했을 때 lnb의 변화 */
+.gnb>li {
+    position: relative;
+    cursor: pointer;
+}
+
+.gnb>li:hover .lnb {
+    opacity: 1;
+    visibility: visible;
+    top: 50px;
+}
+
+/* 3. lnb 내부 스타일 (선택 사항: 디자인을 위해 추가) */
+.lnb li {
+    /* 배경색이 있어야 글씨가 잘 보임 */
+    padding: 16px;
+
+}
+
+.lnb li a {
+    font-family: A2z;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.lnb li a:hover {
+    color: #F2572B;
+}
+
+.gnb>li>a {
+    position: relative;
+    text-decoration: none;
+    color: #fff;
+    padding-bottom: 8px;
+    display: inline-block;
+}
+
+.gnb>li>a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #F2572B;
+    transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.gnb>li:hover>a::after {
+    width: 100%;
+}
+
+/*푸터 시작*/
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ft_wrap_up {
+    width: 100%;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 350px;
+}
+
+
+
+.ft_up {
+    width: 1440px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+
+
+
+}
+
+
+
+dt {
+    margin-bottom: 32px;
+}
+
+dd a {
+    font-weight: 300;
+    font-family: A2z;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+dd:not(:last-child) {
+    margin-bottom: 16px;
+}
+
+dl {
+    padding-left: 24px;
+    width: 240px;
+    height: 200px;
+}
+
+dl:not(:last-child) {
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.ft_up dl:last-child dt a {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.ft_up dl:last-child span {
+    display: block;
+    width: 17px;
+    height: 15px;
+    background: url(../img/top_arr.svg)no-repeat center center;
+}
+
+.ft_wrap_down {
+    width: 100%;
+    background-color: #020202;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ft_down {
+    width: 1440px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ft_down_left>a {
+    display: block;
+    width: 209px;
+    height: 35px;
+    background: url(../img/logo.svg)no-repeat center center;
+    margin-bottom: 40px;
+}
+
+.ft_down_left ul {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 24px;
+}
+
+.ft_down_left ul a {
+    font-family: A2z;
+    font-weight: 300;
+}
+
+.ft_down_left p {
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 300;
+}
+
+.ft_down_right {
+    display: flex;
+    align-items: end;
+    gap: 16px;
+    right: 0;
+}
+
+.ft_down_right>span:not(:nth-child(2)) {
+    display: block;
+    width: 43px;
+    height: 30px;
+    background: url(../img/ks.svg)no-repeat center center;
+}
+
+.ft_down_right span:nth-child(2) {
+    display: block;
+    width: 43px;
+    height: 30px;
+    background: url(../img/wa.svg)no-repeat center center;
+}
+
+.ft_down_right .btn a {
+    padding: 16px 24px;
+    font-family: A2z;
+    font-weight: 200;
+}
+
+.ft_down_right .btn span {
+    display: block;
+    width: 12px;
+    height: 7px;
+    background: url(../img/ft_arr.svg)no-repeat center center;
+}
+
+.btn {
+    display: flex;
+
+}
+
+.btn a {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: white;
+    background: rgba(255, 255, 255, 0.004);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 50px;
+    box-shadow: inset 0 2px 2px -1px rgba(255, 255, 255, 0.3), inset 2px 0 2px -1px rgba(255, 255, 255, 0.3);
+    padding: 16px 24px;
+    transition: all 0.3s ease;
+}
+
+/* 기본 상태에 overflow hidden 추가 필수 */
+.btn a {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s;
+}
+
+.btn a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transform: skewX(-20deg);
+}
+
+.btn a:hover::after {
+    left: 150%;
+    transition: 1s;
+}

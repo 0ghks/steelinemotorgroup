@@ -1,0 +1,284 @@
+@charset "utf-8";
+
+
+.hero {
+    height: 100vh;
+    background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 50%, #000000 100%), url(../img/hero_banner.jpg) no-repeat center / cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+
+}
+
+.hero_contain {
+    width: 100%;
+    color: white;
+    padding: 0 96px;
+}
+
+.hero_txt {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 96px;
+}
+
+
+
+/* 스크롤 다운 버튼 위치가 겹친다면 중앙 정렬 유지 */
+.scroll_down {
+    width: 100%;
+    margin-bottom: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.scroll_down a span {
+    display: block;
+    width: 24px;
+    height: 14px;
+    background: url(../img/scroll_downarr.svg)no-repeat center center;
+    margin: 3px -11px
+}
+
+.scroll_down .btn a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+.page {
+    position: fixed;
+    right: 96px;
+    bottom: 48px;
+    font-size: 24px;
+    font-family: A2z;
+}
+
+/* 총 페이지 수( / 3) 스타일 */
+.page span {
+    color: #555555;
+    font-family: A2z;
+}
+
+.s1 {
+    height: 100vh;
+    background: linear-gradient(-90deg, rgba(0, 0, 0, 0) 0%, #000000 100%), url(../img/s1_banner.jpg) no-repeat center / cover;
+    padding: 0 96px;
+    align-items: center;
+    display: flex;
+}
+
+.s1_contain {
+    display: flex;
+    flex-direction: column;
+}
+
+.s1_contain h3 {
+    color: white;
+    margin-bottom: 24px;
+}
+
+.s1_contain p {
+    font-family: A2z;
+    color: #dedede;
+    font-weight: 500;
+    font-size: 20px;
+    max-width: 500px;
+    line-height: 29px;
+    letter-spacing: 0.025em;
+    margin-bottom: 56px;
+}
+
+
+
+.btn span {
+    display: block;
+    width: 10px;
+    height: 17px;
+    background: url(../img/small_right.svg)no-repeat center center;
+}
+
+
+
+/* 섹션 전체 설정 */
+.s2 {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0 96px;
+    background-color: black;
+    color: #fff;
+}
+
+/* 텍스트 컨테이너 (빨간 보더) */
+.s2_contain {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.s2_contain h3 {
+
+    margin-bottom: 24px;
+    color: #fff;
+    /* 예시 크기 */
+}
+
+.s2_contain p {
+    color: #555;
+    font-size: 20px;
+    font-family: A2z;
+    font-weight: 500;
+}
+
+/* 슬라이드 마스크 (흰색 보더 - 화면 전체 확장) */
+.s2_silde {
+    height: 500px;
+    position: relative;
+
+    /* 빨간 보더(padding 96px)를 무시하고 화면 끝까지 확장 */
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* 슬라이드 리스트 (실제 움직이는 줄) */
+.silde_list {
+    display: flex;
+    gap: 96px;
+    position: relative;
+    list-style: none;
+    padding: 0;
+    flex-shrink: 0;
+    transition: transform 0.5s ease-in-out;
+
+    /* [중요] 2번 슬라이드를 디폴트 중앙으로 배치 */
+    /* 계산: -(슬라이드 너비 798px + 간격 96px) */
+    transform: translateX(calc(-798px - 96px));
+}
+
+/* 슬라이드 개별 아이템 (초록 보더) */
+.silde_list div {
+    width: 798px;
+    height: 500px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+/* 배경 이미지 설정 */
+.silde01 {
+    background: url(../img/sedan.png) no-repeat center/cover;
+}
+
+/* 배경 이미지 설정 */
+.silde02 {
+    background: url(../img/suv.png) no-repeat center/cover;
+}
+
+/* 배경 이미지 설정 */
+.silde03 {
+    background: url(../img/performance.png) no-repeat center/cover;
+}
+
+/* 화살표 버튼 공통 설정 */
+.bt2 {
+    position: absolute;
+    width: 100%;
+    /* 부모 너비 전체 사용 */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    pointer-events: none;
+    /* 버튼 영역이 슬라이드 클릭을 방해하지 않도록 */
+}
+
+.bt2 a {
+    display: block;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    pointer-events: auto;
+    /* 버튼 자체는 클릭 가능하게 */
+}
+
+/* 왼쪽 화살표: 중앙에서 (슬라이드 절반 399px + 간격 절반 48px) 만큼 왼쪽으로 */
+.bt2 a:nth-child(1) {
+    left: calc(50% - (798px / 2) - (96px / 2));
+    transform: translate(-50%, -50%);
+    /* 버튼 자체의 너비 절반만큼 보정 */
+    background: url(../img/left_arr.svg) no-repeat center center;
+}
+
+/* 오른쪽 화살표: 중앙에서 (슬라이드 절반 399px + 간격 절반 48px) 만큼 오른쪽으로 */
+.bt2 a:nth-child(2) {
+    right: calc(50% - (798px / 2) - (96px / 2));
+    transform: translate(50%, -50%);
+    /* 버튼 자체의 너비 절반만큼 보정 */
+    background: url(../img/right_arr.svg) no-repeat center center;
+}
+
+.silde_bt a {
+    position: absolute;
+    bottom: 48px;
+}
+
+.s3 {
+    height: 500px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%), url(../img/bot_banner.jpg);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 0 96px;
+    text-align: center;
+}
+
+.s3 h4 {
+    font-size: 24px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 24px;
+}
+
+.s3 h3 {
+    font-family: A2z;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 56px;
+}
+
+.bot_btn {
+    display: flex;
+    gap: 32px;
+    color: #fff;
+
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.bot_btn a {
+    padding: 16px 32px;
+    font-family: A2z;
+    border-radius: 50px;
+}
+
+.bot_btn a:nth-child(2) {
+    background-color: #F2572B;
+}
