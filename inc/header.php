@@ -60,16 +60,8 @@
                     <li><a href="sub.html">EN<span></span></a></li>
                     <li><a href="sub.html"></a></li>
 
-
                 </ul>
 
             </nav>
-
-
-
-
-
-
-
 
         </header>
